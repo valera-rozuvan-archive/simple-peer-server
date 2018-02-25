@@ -6,6 +6,7 @@ var port = 9000;
 var server = new PeerServer({
   port: port,
   host: '0.0.0.0',
+  allow_discovery: true,
   ssl: {
     key: fs.readFileSync('./server.key'),
     cert: fs.readFileSync('./server.crt')
