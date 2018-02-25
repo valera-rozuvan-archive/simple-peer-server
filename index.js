@@ -8,8 +8,14 @@ var server = new PeerServer({
   host: '0.0.0.0',
   allow_discovery: true,
   ssl: {
+    /*
     key: fs.readFileSync('./server.key'),
     cert: fs.readFileSync('./server.crt')
+    */
+
+    key: fs.readFileSync('./ssl/server.key'),
+    cert: fs.readFileSync('./ssl/server.crt'),
+    ca: fs.readFileSync('./ssl/ca.crt')
   }
 });
 
