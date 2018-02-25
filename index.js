@@ -8,15 +8,16 @@ var server = new PeerServer({
   host: '0.0.0.0',
   allow_discovery: true,
   ssl: {
-
+    /*
     key: fs.readFileSync('./server.key'),
     cert: fs.readFileSync('./server.crt')
+    */
 
-    /*
     key: fs.readFileSync('./ssl/server.key'),
     cert: fs.readFileSync('./ssl/server.crt'),
-    // ca: fs.readFileSync('./ssl/ca.crt')
+    ca: fs.readFileSync('./ssl/ca.crt')
 
+    /*
     requestCert: false,
     rejectUnauthorized: false
     */
@@ -29,6 +30,10 @@ server.on('connection', function (id) {
 
 server.on('disconnect', function (id) {
   console.log('disconnect with id ' + id);
+});
+
+server.on('error', function (err) {
+  console.log(err.type);
 });
 
 console.log('peer server running on ' + ip.address() + ':' + port);
